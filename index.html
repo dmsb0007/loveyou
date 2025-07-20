@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>I Love You Animation</title>
   <style>
-    /* Basic reset */
+    /* Reset all default styling */
     * {
       margin: 0;
       padding: 0;
@@ -13,7 +13,7 @@
     }
 
     body {
-      background-color: #fff0f5; /* Soft pink background */
+      background: linear-gradient(135deg, #ff7b7b, #ff5f7f); /* Gradient background */
       font-family: 'Arial', sans-serif;
       display: flex;
       justify-content: center;
@@ -21,42 +21,48 @@
       height: 100vh;
       flex-direction: column;
       text-align: center;
+      overflow: hidden;
+      animation: backgroundMovement 10s infinite linear;
     }
 
     #heart {
-      width: 100px;
-      height: 100px;
-      background-color: #ff69b4; /* Pink color */
+      width: 120px;
+      height: 120px;
+      background-color: #ff1493; /* Heart pink color */
       transform: rotate(45deg);
       position: relative;
-      animation: heartPop 2s ease-in-out forwards;
+      animation: heartPop 2s ease-out forwards, pulse 1.5s infinite alternate; /* Heart pop and pulse effect */
+      box-shadow: 0 0 30px rgba(255, 20, 147, 0.8); /* Glowing effect */
     }
 
     #heart::before,
     #heart::after {
       content: '';
       position: absolute;
-      width: 100px;
-      height: 100px;
-      background-color: #ff69b4; /* Pink color */
+      width: 120px;
+      height: 120px;
+      background-color: #ff1493; /* Heart pink color */
       border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 20, 147, 0.8); /* Glowing effect */
     }
 
     #heart::before {
-      left: -50px;
+      left: -60px;
     }
 
     #heart::after {
-      top: -50px;
+      top: -60px;
     }
 
     #text {
-      opacity: 0;
       font-size: 36px;
-      color: #ff1493; /* Deep pink */
+      color: white;
       font-weight: bold;
-      margin-top: 20px;
-      animation: textFadeIn 2s 2s forwards; /* Text fades in after heart animation */
+      margin-top: 30px;
+      opacity: 0;
+      letter-spacing: 3px;
+      text-shadow: 0 0 15px #ff1493, 0 0 25px #ff1493, 0 0 35px #ff1493; /* Glowing text */
+      animation: textFadeIn 2s 2s forwards, textGlow 1.5s infinite alternate;
     }
 
     @keyframes heartPop {
@@ -76,6 +82,43 @@
         opacity: 1;
       }
     }
+
+    @keyframes backgroundMovement {
+      0% {
+        background: linear-gradient(135deg, #ff7b7b, #ff5f7f);
+      }
+      50% {
+        background: linear-gradient(135deg, #ff4e50, #ff5e62);
+      }
+      100% {
+        background: linear-gradient(135deg, #ff7b7b, #ff5f7f);
+      }
+    }
+
+    @keyframes textGlow {
+      0% {
+        text-shadow: 0 0 15px #ff1493, 0 0 25px #ff1493, 0 0 35px #ff1493;
+      }
+      50% {
+        text-shadow: 0 0 30px #ff1493, 0 0 50px #ff1493, 0 0 70px #ff1493;
+      }
+      100% {
+        text-shadow: 0 0 15px #ff1493, 0 0 25px #ff1493, 0 0 35px #ff1493;
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
   </style>
 </head>
 <body>
