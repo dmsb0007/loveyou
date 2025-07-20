@@ -13,7 +13,7 @@
     }
 
     body {
-      background: linear-gradient(135deg, #ff7b7b, #ff5f7f); /* Gradient background */
+      background: linear-gradient(135deg, #f6a5d0, #ff8ca5); /* Soft and vibrant background */
       font-family: 'Arial', sans-serif;
       display: flex;
       justify-content: center;
@@ -56,13 +56,42 @@
 
     #text {
       font-size: 36px;
-      color: white;
+      color: #fff;
       font-weight: bold;
       margin-top: 30px;
       opacity: 0;
       letter-spacing: 3px;
       text-shadow: 0 0 15px #ff1493, 0 0 25px #ff1493, 0 0 35px #ff1493; /* Glowing text */
       animation: textFadeIn 2s 2s forwards, textGlow 1.5s infinite alternate;
+    }
+
+    /* Flower Animation */
+    .flower {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: url('https://cdn.pixabay.com/photo/2017/08/30/02/23/flower-2698576_960_720.png') no-repeat center center;
+      background-size: cover;
+      opacity: 0;
+      animation: flowerBloom 2s ease-out infinite;
+    }
+
+    .flower:nth-child(1) {
+      top: 10%;
+      left: 10%;
+      animation-delay: 1s;
+    }
+
+    .flower:nth-child(2) {
+      top: 15%;
+      left: 30%;
+      animation-delay: 1.5s;
+    }
+
+    .flower:nth-child(3) {
+      top: 5%;
+      left: 50%;
+      animation-delay: 2s;
     }
 
     @keyframes heartPop {
@@ -77,21 +106,24 @@
       }
     }
 
-    @keyframes textFadeIn {
-      to {
+    @keyframes flowerBloom {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1);
         opacity: 1;
+      }
+      100% {
+        transform: scale(0);
+        opacity: 0;
       }
     }
 
-    @keyframes backgroundMovement {
-      0% {
-        background: linear-gradient(135deg, #ff7b7b, #ff5f7f);
-      }
-      50% {
-        background: linear-gradient(135deg, #ff4e50, #ff5e62);
-      }
-      100% {
-        background: linear-gradient(135deg, #ff7b7b, #ff5f7f);
+    @keyframes textFadeIn {
+      to {
+        opacity: 1;
       }
     }
 
@@ -104,6 +136,18 @@
       }
       100% {
         text-shadow: 0 0 15px #ff1493, 0 0 25px #ff1493, 0 0 35px #ff1493;
+      }
+    }
+
+    @keyframes backgroundMovement {
+      0% {
+        background: linear-gradient(135deg, #f6a5d0, #ff8ca5);
+      }
+      50% {
+        background: linear-gradient(135deg, #f5e1f5, #ff8a8d);
+      }
+      100% {
+        background: linear-gradient(135deg, #f6a5d0, #ff8ca5);
       }
     }
 
@@ -130,6 +174,11 @@
   <div id="text">
     <p>I Love You</p>
   </div>
+
+  <!-- Flowers -->
+  <div class="flower"></div>
+  <div class="flower"></div>
+  <div class="flower"></div>
 
 </body>
 </html>
